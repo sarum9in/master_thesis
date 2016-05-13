@@ -1,0 +1,66 @@
+\begin{titlepage}
+
+\thispagestyle{empty}
+
+\begin{center}
+\large
+МИНОБРНАУКИ РОССИИ\\*
+Федеральное государственное бюджетное образовательное\\*
+учреждение высшего профессионального образования\\*
+«Ижевский государственный технический университет им. М. Т. Калашникова»\\*
+Факультет «Информатика и вычислительная техника»\\*
+кафедра «Программное обеспечение»
+\vspace{1cm}
+\end{center}
+
+\vspace{8em}
+
+\begin{center}
+\large
+\titletext
+\end{center}
+
+\vspace{2.5em}
+
+\ifdefmacro{\myvariant}{
+    \begin{center}
+        Вариант №\myvariant
+    \end{center}
+}{
+    \vspace{3em}
+}
+\vspace{6em}
+
+\begin{flushleft}
+    \mylabel\\*
+    студент группы \mygroup \hfill \myname\\*
+    \vspace{1.5em}
+\ifdefmacro{\myteacherdegree}{
+    \myteacherlabel\\*
+    \myteacherdegree \hfill \myteacher\\*
+}{
+    \myteacherlabel \hfill \myteacher\\*
+}
+\vspace{1.5em}
+\ifdefmacro{\myverifier}{
+    Нормоконтролер \hfill \myverifier\\*
+    \vspace{1.5em}
+}{
+}
+\ifdefmacro{\mydepartmenthead}{
+    \mydepartmentheadlabel\\*
+    \mydepartmentheaddegree \hfill \mydepartmenthead
+}{
+}
+\end{flushleft}
+
+\vspace{\fill}
+
+\begin{center}
+    Ижевск \myyear
+\end{center}
+
+\end{titlepage}
+
+\setcounter{page}{2}
+\pagestyle{plain}

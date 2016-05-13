@@ -1,0 +1,164 @@
+%================
+% Разметка страницы
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+%================
+% Остальное
+\renewcommand{\baselinestretch}{1.5}
+\frenchspacing
+\newcommand{\myenquote}[1]{``#1''}
+
+%================
+% Формат списков
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii})}
+\renewcommand{\labelenumiii}{\labelenumii\arabic{enumiii})}
+\renewcommand\textbullet{--}
+
+%================
+% Формат области печати
+\usepackage[a4paper]{geometry}
+  \geometry{left=3cm}
+  \geometry{right=1cm}
+  \geometry{top=2cm}
+  \geometry{bottom=2cm}
+
+%================
+% Формат заголовков
+\usepackage[explicit]{titlesec}
+
+\AtBeginDocument{
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\bibname}{Список литературы}
+}
+\renewcommand{\appendixname}{Приложение}
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{equation}}
+
+\setcounter{secnumdepth}{4}
+%\let\appendix\chapter
+\titleformat{\chapter}[hang]
+    {\normalfont\center}
+    {\thechapter.}
+    {1em}
+    {\uppercase{#1}}
+\titlespacing{\chapter}
+    {0cm} %left
+    {-2em} %before
+    {1cm} %after
+
+\titleformat{\section}[hang]
+    {\normalfont}
+    {\thesection.}
+    {1em}{#1}
+\titlespacing{\section}
+    {1.5cm} %left
+    {1.5em} %before
+    {0.5cm} %after
+
+\titleformat{\subsection}[hang]
+    {\normalfont}
+    {\thesubsection.}
+    {1em}{#1}
+\titlespacing{\subsection}
+    {1.5cm} %left
+    {1.5em} %before
+    {0.5cm} %after
+
+\titleformat{\subsubsection}[hang]
+    {\normalfont}
+    {\thesubsubsection.}
+    {1em}{#1}
+\titlespacing{\subsubsection}
+    {1.5cm} %left
+    {1em} %before
+    {1em} %after
+
+\titleformat{\paragraph}[runin]
+    {\normalfont}
+    {\theparagraph.}
+    {1em}{#1}
+\titlespacing{\paragraph}
+    {1.5cm} %left
+    {1em} %before
+    {1ex} %after
+
+%==================
+% Оглавление
+\usepackage{tocloft}
+\usepackage{etoolbox}
+
+\renewcommand{\cftchapaftersnum}{.}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+\renewcommand{\cftparaaftersnum}{.}
+
+\renewcommand{\cftchappagefont}{\mdseries}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\makeatletter
+\patchcmd{\l@chapter}
+    {\cftchapfont #1}   % search pattern
+    {\cftchapfont {#1}} % replace by
+    {}                  % success
+    {}                  % failure
+\makeatother
+\renewcommand\cftchapfont{\mdseries\MakeUppercase}
+
+\makeatletter
+\patchcmd{\@cftmaketoctitle}
+    {\cfttoctitlefont\contentsname}
+    {\cfttoctitlefont{\contentsname}}
+    {}
+    {}
+\makeatother
+\renewcommand{\cfttoctitlefont}[1]{\large\centering\MakeUppercase{#1}\par}
+
+\setlength{\cftbeforechapskip}{0.5em}
+\setlength{\cftbeforesecskip}{0.5em}
+\setlength{\cftbeforesubsecskip}{0.5em}
+\setlength{\cftbeforetoctitleskip}{-2em}
+
+%==================
+% Списки
+\usepackage{enumitem}
+\setlist{nolistsep}
+\setenumerate[0]{leftmargin=2cm}
+\setenumerate[1]{leftmargin=2cm}
+\setenumerate[2]{leftmargin=1cm}
+\setitemize[0]{leftmargin=2cm}
+
+%==================
+% Код
+\usepackage{listings}
+\lstset{ %
+language=C++,                   % the language of the code
+basicstyle=\ttfamily\footnotesize,% the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=2,                   % the step between two line-numbers. If it's 1, each line
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+%backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,                   % adds a frame around the code
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+morekeywords={*,...}            % if you want to add more keywords to the set
+}
