@@ -64,16 +64,5 @@ secp()
 echo '\chapter{Исходный код}'
 echo
 
-sec bunsan::worker bunsan/broker
-
-secp bunsan::pm bunsan/pm
-
-secp bacs::archive bacs/archive
-
-secp bacs::statement_provider bacs/statement_provider
-
-secp bacs::problem bunsan/bacs/common bacs/problem
-
-secp bacs::problem::single bacs/problem_plugins/single
-
-sec bacs::repository bacs/repository/bacs/system
+#sec bunsan::worker bunsan/broker
+#secp bunsan::pm bunsan/pm
