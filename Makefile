@@ -5,7 +5,7 @@ XELATEXFLAGS = -halt-on-error
 	$(XELATEX) $(XELATEXFLAGS) $<
 	$(XELATEX) $(XELATEXFLAGS) $<
 
-all: main.pdf seletkov.pdf
+all: main.pdf
 
 open: main.pdf
 	xdg-open $<
