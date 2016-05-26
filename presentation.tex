@@ -64,14 +64,13 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 \newenvironment{sframe}[2]{\section{#1}\begin{frame}[label=#2]{#1}}{\end{frame}}
 
 \begin{document}
-    \title[BACS]{BACS ACM Contest System}
+    \title[RPC]{Модели RPC в проектировании олимпиадного сервера}
     \author[Филиппов]{А.~Филиппов\inst{1}}
     \institute
     {
         \inst{1}
         Ижевский государственный технический университет имени М.Т.~Калашникова
     }
-    %\frame{\titlepage}
 
     \input beamertitle.tex
 
@@ -105,7 +104,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
         \begin{block}{}
             \begin{figure}[H]
                 \centering
-                \includegraphics{rs/systemdesign}
+                %\includegraphics{rs/systemdesign}
             \end{figure}
         \end{block}
     \end{sframe}
@@ -113,17 +112,17 @@ morekeywords={*,...}            % if you want to add more keywords to the set
     \begin{sframe}{Система распределения нагрузки}{dcs}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/bunsandcs}
+            %\includegraphics[width=\columnwidth]{rs/bunsandcs}
         \end{figure}
     \end{sframe}
 
     \begin{frame}{Система распределения нагрузки: интеграция}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/bunsandcsbacs}
+            %\includegraphics[width=\columnwidth]{rs/bunsandcsbacs}
         \end{figure}
     \end{frame}
-    
+
     \begin{frame}{Система распределения нагрузки: пример работы}
         \begin{itemize}
             \item Сервис регистрируется
@@ -132,7 +131,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
         \end{itemize}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/bunsandcsexample}
+            %\includegraphics[width=\columnwidth]{rs/bunsandcsexample}
         \end{figure}
     \end{frame}
 
@@ -144,7 +143,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
         \end{itemize}
         \begin{figure}
             \centering
-            \includegraphics[width=0.8\columnwidth]{rs/bunsanpm}
+            %\includegraphics[width=0.8\columnwidth]{rs/bunsanpm}
         \end{figure}
     \end{sframe}
 
@@ -158,7 +157,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
         \end{itemize}
         \begin{figure}
             \centering
-            \includegraphics[width=0.6\columnwidth]{rs/bacsarchive}
+            %\includegraphics[width=0.6\columnwidth]{rs/bacsarchive}
         \end{figure}
     \end{sframe}
 
@@ -196,57 +195,22 @@ morekeywords={*,...}            % if you want to add more keywords to the set
         \end{itemize}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/bacsstatementprovider}
+            %\includegraphics[width=\columnwidth]{rs/bacsstatementprovider}
         \end{figure}
     \end{sframe}
 
     \begin{sframe}{Пример работы системы тестирования}{testing}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/testing}
+            %\includegraphics[width=\columnwidth]{rs/testing}
         \end{figure}
     \end{sframe}
 
     \begin{frame}{Отправка решения участником}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{rs/sendsubmitok}
+            %\includegraphics[width=\columnwidth]{rs/sendsubmitok}
         \end{figure}
-    \end{frame}
-    
-    \begin{frame}{Формируемый запрос: системные параметры}
-        \lstinputlisting{rs/task_system.txt}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: решение}
-        \lstinputlisting{rs/task_solution.txt}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: настройки тестирования}
-        \lstinputlisting{rs/task_testing.txt}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: создание файлов}
-        \lstinputlisting{rs/task_testing_files.txt}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: перенаправление ввода-вывода}
-        \lstinputlisting{rs/task_testing_execution.txt}
-    \end{frame}
-
-    \begin{frame}{Отображение результатов пользователю}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\columnwidth]{rs/mysubmitsok}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: системные параметры}
-        \lstinputlisting{rs/result_system.txt}
-    \end{frame}
-
-    \begin{frame}{Формируемый запрос: тестирование}
-        \lstinputlisting{rs/result_testing.txt}
     \end{frame}
 
     \begin{frame}

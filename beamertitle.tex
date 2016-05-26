@@ -1,0 +1,54 @@
+\begin{frame}
+
+\newcommand{\mytitlefont}{\fontsize{6pt}{7.2}\selectfont}
+
+\begin{center}
+\mytitlefont
+МИНОБРНАУКИ РОССИИ\\*
+Федеральное государственное бюджетное образовательное\\*
+учреждение высшего образования\\*
+«Ижевский государственный технический университет им. М. Т. Калашникова»\\*
+Факультет «Информатика и вычислительная техника»
+\vspace{1cm}
+\end{center}
+
+\vspace{1em}
+
+\mytitlefont
+\begin{center}
+\mytitlefont
+\titletext
+\end{center}
+
+\vspace{1em}
+
+\ifdefmacro{\myvariant}{
+    \begin{center}
+        \mytitlefont
+        Вариант №\myvariant
+    \end{center}
+}{
+    \vspace{2em}
+}
+\vspace{1em}
+
+\begin{flushleft}
+    \mytitlefont
+    \mylabel \hfill \myname\\*
+    \vspace{1.5em}
+\ifdefmacro{\myteacherdegree}{
+    \myteacherlabel\\*
+    \myteacherdegree \hfill \myteacher\\*
+}{
+    \myteacherlabel \hfill \myteacher\\*
+}
+\end{flushleft}
+
+\vspace{\fill}
+
+\begin{center}
+    \mytitlefont
+    Ижевск \myyear
+\end{center}
+
+\end{frame}
