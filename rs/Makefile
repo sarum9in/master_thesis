@@ -14,7 +14,7 @@ DOT2TEXFLAGS=--figonly --format=tikz
 	mscgen -T eps -o $@ -i $<
 
 %.eps: %.ps
-	ps2eps $< $@
+	ps2eps -f $< $@
 
 %.ps: %.mp
 	mpost -tex=xelatex $<
