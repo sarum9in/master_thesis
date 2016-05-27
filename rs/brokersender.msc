@@ -1,0 +1,19 @@
+msc {
+    sender, broker;
+
+    sender>>broker[label="connect"];
+    sender<<broker[label="connected"];
+    sender->broker[label="task 1"];
+    sender<-broker[label="status 1"];
+    sender->broker[label="task 2"];
+    sender<-broker[label="status 2"];
+    ...;
+    sender--broker[label="disconnect"];
+    sender>>broker[label="reconnect"];
+    sender>>broker[label="reconnect"];
+    sender<<broker[label="connected"];
+    ...;
+    sender<-broker[label="result 2"];
+    sender<-broker[label="status 3"];
+    sender<-broker[label="error 1"];
+}
