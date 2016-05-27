@@ -64,7 +64,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 \newenvironment{sframe}[2]{\section{#1}\begin{frame}[label=#2]{#1}}{\end{frame}}
 
 \begin{document}
-    \title[RPC]{Модели RPC в проектировании олимпиадного сервера}
+    \title[RPC]{\titletext}
     \author[Филиппов]{А.~Филиппов\inst{1}}
     \institute
     {
@@ -76,142 +76,85 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 
     \begin{sframe}{Цель работы}{target}
         \begin{block}{Цель}
-            Разработать тестирующую систему как основу для разработки
-            автоматизированных систем проведения соревнований по программированию
+            Анализ и разработка технологии RPC для олимпиадной системы.
         \end{block}
 
         \begin{block}{Требования}
             \begin{itemize}
-                \item API -- программный интерфейс
-                \item Расширяемость
-                \item Модульность
+                \item Надёжность передачи данных
+                \item Кросс-платформенность
             \end{itemize}
         \end{block}
     \end{sframe}
 
     \begin{sframe}{Задачи работы}{problems}
         \begin{itemize}
-            \item \hyperlink{systemdesign}{Проектирование тестирующей системы}
-            \item \hyperlink{dcs}{Разработка системы распределения нагрузки}
-            \item \hyperlink{bunsanpm}{Разработка пакетного менеджера}
-            \item \hyperlink{bacsarchive}{Разработка архива задач}
-            \item \hyperlink{bacsproblem}{Разработка форматов задач}
-            \item \hyperlink{bacsstatementprovider}{Разработка сервиса условий}
+            \item \hyperlink{analysis}{Исследование моделей использования RPC
+                в олимпиадной системе BACS, а также требований,
+                предъявляемых к RPC в рамках каждой модели};
+            \item \hyperlink{review}{исследование существующих технологий RPC
+                и анализ их соответствия полученным моделям;}
+            \item \hyperlink{protodev}{разработка протокола RPC
+                для олимпиадной системы;}
+            \item \hyperlink{binddev}{реализация протокола для языков
+                программирования Go, Python и C\#.}
         \end{itemize}
     \end{sframe}
 
-    \begin{sframe}{Архитектура системы}{systemdesign}
-        \begin{block}{}
-            \begin{figure}[H]
-                \centering
-                %\includegraphics{rs/systemdesign}
-            \end{figure}
+    \begin{sframe}{Исследование моделей использования RPC}{analysis}
+        \begin{itemize}
+            \item Асинхронность
+            \item Надёжность
+            \item Переносимость
+            \item Производительность
+        \end{itemize}
+    \end{sframe}
+
+    \begin{sframe}{Исследование технологий RPC}{review}
+        \begin{center}
+            \resizebox{\columnwidth}{!}{\begin{tabular}{|c|c|c|c|c|} \hline
+                                & Асинхронность & Персистентность &
+                                    Переносимость & Производительность \\ \hline
+                XML-RPC         & + & - & + & низкая \\ \hline
+                JSON-RPC        & + & - & + & низкая \\ \hline
+                D-BUS           & + & - & - & высокая \\ \hline
+                Java RMI        & + & - & - & высокая \\ \hline
+                SOAP            & + & - & + & низкая \\ \hline
+                Apache Thrift   & + & - & + & высокая \\ \hline
+                gRPC            & + & - & + & высокая \\ \hline
+            \end{tabular}}
+        \end{center}
+    \end{sframe}
+
+    \begin{sframe}{Разработка протокола}{protodev}
+        \begin{figure}
+            \centering
+            \resizebox{\columnwidth}{!}{\input rs/brokerproto.dot}
+        \end{figure}
+    \end{sframe}
+
+    \begin{sframe}{Реализация протокола: отправитель}{binddev}
+        \begin{block}{Языки}
+            \begin{itemize}
+                \item Go: github.com/streadway/amqp
+                \item Python: python-pika
+                \item C\#: RabbitMQ.Client
+            \end{itemize}
+        \end{block}
+        \begin{block}{Отправитель}
+            \begin{itemize}
+                \item Подключение и мониторинг соединения с брокером
+                \item Уведомления пользователя о результатах и промежуточных
+                    состояниях
+            \end{itemize}
+        \end{block}
+        \begin{block}{Получатель}
+            \begin{itemize}
+                \item Асинхронная отправка промежуточных состояний
+                \item Последовательная обработка заданий
+            \end{itemize}
         \end{block}
     \end{sframe}
-
-    \begin{sframe}{Система распределения нагрузки}{dcs}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/bunsandcs}
-        \end{figure}
-    \end{sframe}
-
-    \begin{frame}{Система распределения нагрузки: интеграция}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/bunsandcsbacs}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Система распределения нагрузки: пример работы}
-        \begin{itemize}
-            \item Сервис регистрируется
-            \item Клиент получает URI сервиса по известному идентификатору
-            \item Клиент обращается к сервису
-        \end{itemize}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/bunsandcsexample}
-        \end{figure}
-    \end{frame}
-
-    \begin{sframe}{Пакетный менеджер}{bunsanpm}
-        \begin{itemize}
-            \item Удалённый репозиторий
-            \item Кэширование промежуточных результатов
-            \item Компиляция на целевой машине
-        \end{itemize}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=0.8\columnwidth]{rs/bunsanpm}
-        \end{figure}
-    \end{sframe}
-
-    \begin{sframe}{Архив задач}{bacsarchive}
-        \begin{itemize}
-            \item Пользователь добавляет задачу в архив в одном из поддерживаемых форматов.
-            \item Архив преобразует задачу из пользовательского формата во внутренний --
-                множество пакетов, которые помещаются в репозиторий.
-            \item Пользователю предоставляется доступ к информации о задаче
-                (название, авторы, отвественные, рекомендуемые настройки проверки, ...).
-        \end{itemize}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=0.6\columnwidth]{rs/bacsarchive}
-        \end{figure}
-    \end{sframe}
-
-    \begin{sframe}{Форматы задач}{bacsproblem}
-        \begin{itemize}
-            \item Поддержка пользовательских форматов задач
-            \item Лёгкость добавления поддержки новых форматов
-            \item Преобразование в универсальный внутренний формат
-        \end{itemize}
-        \begin{block}{simple0}
-            \dirtree{%
-                .1 /.
-                .2 checker/.
-                .3 config.ini.
-                .3 checker.cpp.
-                .2 statement/.
-                .3 pdf\_ru.ini.
-                .3 russian.tex.
-                .2 tests/.
-                .3 1.in.
-                .3 1.out.
-                .2 format.
-                .2 config.ini.
-            }
-        \end{block}
-    \end{sframe}
-
-    \begin{sframe}{Сервис условий}{bacsstatementprovider}
-        \begin{itemize}
-            \item Пользователь запрашивает условие у WEB-интерфейса
-            \item WEB-интерфейс переадресует запрос сервису условий
-            \item Сервис условий генерирует условие из исходного кода,
-                находящегося в репозитории
-            \item Сервис условий предоставляет пользователю доступ к условию
-        \end{itemize}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/bacsstatementprovider}
-        \end{figure}
-    \end{sframe}
-
-    \begin{sframe}{Пример работы системы тестирования}{testing}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/testing}
-        \end{figure}
-    \end{sframe}
-
-    \begin{frame}{Отправка решения участником}
-        \begin{figure}
-            \centering
-            %\includegraphics[width=\columnwidth]{rs/sendsubmitok}
-        \end{figure}
-    \end{frame}
 
     \begin{frame}
         \Large\centering Спасибо за внимание!

@@ -1,0 +1,42 @@
+digraph BrokerProto
+{
+    node[shape=box];
+    rankdir=LR;
+
+    subgraph cluster_broker {
+        label="Брокер RabbitMQ";
+
+        subgraph level1 {
+            tasks[label="Очередь заданий"];
+        }
+        subgraph level2 {
+            rank=same;
+            status[label="Очередь статусов"];
+            result[label="Очередь результатов"];
+            error[label="Очередь ошибок"];
+        }
+    }
+
+    sender[label="Отправитель"];
+    receiver1[label="Получатель 1"];
+    receiver2[label="Получатель 2"];
+
+    sender->tasks;
+
+    tasks->receiver1;
+    tasks->receiver2;
+
+    {
+        edge[dir="back"];
+
+        sender->status;
+
+        status->receiver1;
+        result->receiver1;
+
+        status->receiver2;
+        error->receiver2;
+        sender->result;
+        sender->error;
+    }
+}
