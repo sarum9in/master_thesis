@@ -1,11 +1,13 @@
 digraph BacsBasicRPC
 {
+    node[shape=box];
+
     web[label="Web-интерфейс"];
     archive[label="Архив задач"];
     storage[label="Хранилище задач"];
     worker[label="Сервер тестирования"];
 
-    web->worker;
+    web->worker[style="dashed"];
     web->archive;
     archive->storage;
     storage->worker;
