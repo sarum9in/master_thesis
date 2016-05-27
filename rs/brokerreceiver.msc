@@ -1,0 +1,19 @@
+msc {
+    broker, receiver;
+
+    broker<<receiver[label="connect"];
+    broker>>receiver[label="connected"];
+    broker->receiver[label="task 1"];
+    broker<-receiver[label="status 1"];
+    broker<-receiver[label="status 2"];
+    ...;
+    broker--receiver[label="disconnect"];
+    broker<<receiver[label="reconnect"];
+    broker>>receiver[label="connected"];
+    ...;
+    broker<-receiver[label="status 3"];
+    broker<-receiver[label="result 1"];
+
+    broker->receiver[label="task 2"];
+    broker<-receiver[label="error 2"];
+}
