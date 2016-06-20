@@ -1,0 +1,12 @@
+msc {
+    user, web, worker;
+
+    user>>web[label="solution"];
+    web>>worker[label="solution"];
+    web<-worker[label="status update"];
+    web<-worker[label="status update"];
+    user<-web[label="current state"];
+    web<-worker[label="status update"];
+    web<<worker[label="verdict"];
+    user<<web[label="verdict"];
+}
