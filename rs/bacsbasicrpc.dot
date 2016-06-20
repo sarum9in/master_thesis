@@ -4,11 +4,9 @@ digraph BacsBasicRPC
 
     web[label="Web-интерфейс"];
     archive[label="Архив задач"];
-    storage[label="Хранилище задач"];
     worker[label="Сервер тестирования"];
 
     web->worker[style="dashed"];
     web->archive;
-    archive->storage;
-    storage->worker;
+    archive->worker[dir="back"];
 }
