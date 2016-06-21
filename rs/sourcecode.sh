@@ -6,8 +6,9 @@ str()
             gsub("^\\.\\./", "");
 
             x = $0; gsub("^modules/", "", x);
-            gsub("bacs/repository/bacs/system/", "", x);
-            gsub("bacs/problem_plugins", "bacs/problem", x);
+            gsub("^broker/go/", "", x);
+            gsub("^broker/pysrc/", "", x);
+            gsub("^broker_net/", "", x);
             gsub(".*/include/", "", x);
 
             gsub("_", "\\_", x);
