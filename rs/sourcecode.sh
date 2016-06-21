@@ -5,8 +5,7 @@ str()
     awk '{
             gsub("^\\.\\./", "");
 
-            x = $0; gsub("^\\.\\./", "", x);
-            gsub("bunsan/bacs", "bacs", x);
+            x = $0; gsub("^modules/", "", x);
             gsub("bacs/repository/bacs/system/", "", x);
             gsub("bacs/problem_plugins", "bacs/problem", x);
             gsub(".*/include/", "", x);
@@ -20,7 +19,7 @@ gen()
 {
     for i
     do
-        find "../../$i" -type f -name '*.hpp' -o -name '*.py' -o -name '*.proto' | \
+        find "../modules/$i" -type f -name '*.hpp' -o -name '*.py' -o -name '*.proto' -o -name '*.cs' -o -name '*.go' | \
             grep -v /detail/ | \
             grep -v /web/ | \
             grep -v /compatibility/ | \
@@ -64,5 +63,8 @@ secp()
 echo '\chapter{Исходный код}'
 echo
 
+sec "Реализация на языке программирования Go" broker/go
+sec "Реализация на языке программирования Python" broker/pysrc
+sec "Реализация на языке программирования C\#" broker_net
 #sec bunsan::worker bunsan/broker
 #secp bunsan::pm bunsan/pm

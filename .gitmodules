@@ -1,3 +1,6 @@
 [submodule "modules/broker"]
 	path = modules/broker
 	url = https://github.com/bunsanorg/broker.git
+[submodule "modules/broker_net"]
+	path = modules/broker_net
+	url = https://github.com/bunsanorg/broker_net.git
