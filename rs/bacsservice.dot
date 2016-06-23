@@ -1,0 +1,18 @@
+digraph BacsService
+{
+    node[shape=box];
+
+    web[label="Web-интерфейс"];
+    broker[label="Брокер сообщений"];
+    archive[label="Архив задач"];
+    repository[label="Репозиторий модулей"]
+    worker[label="Сервис тестирования"];
+
+    web->broker;
+    web->broker[style="dashed"];
+    broker->worker;
+    broker->worker[style="dashed", dir="back"];
+    web->archive;
+    archive->repository;
+    repository->worker[dir="back"];
+}
