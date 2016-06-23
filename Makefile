@@ -1,13 +1,16 @@
 XELATEX = xelatex
 XELATEXFLAGS = -halt-on-error
 
-ALL=main.pdf presentation.pdf review.pdf
+ALL=main.pdf presentation.pdf review.pdf alltex.txt
 
 %.pdf: %.tex $(wildcard *.tex) resources
 	$(XELATEX) $(XELATEXFLAGS) $<
 	$(XELATEX) $(XELATEXFLAGS) $<
 
 all: $(ALL)
+
+alltex.txt: $(wildcard *.tex)
+	cat $^ >$@
 
 upload: $(ALL)
 	scp $^ cs.istu.ru:public_html
