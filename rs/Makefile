@@ -1,6 +1,6 @@
 DOT = $(addsuffix .dot.tex,$(basename $(wildcard *.dot)))
 SH = $(addsuffix .sh.tex,$(basename $(wildcard *.sh)))
-EPS = $(addsuffix .eps,$(basename $(wildcard *.msc)))
+EPS = $(addsuffix .eps,$(basename $(wildcard *.msc) $(basename $(wildcard *.gnu))))
 MP = $(addsuffix .eps,$(basename $(wildcard *.mp)))
 
 all: $(DOT) $(SH) $(EPS) $(MP)
@@ -15,6 +15,9 @@ DOT2TEXFLAGS=--figonly --format=tikz
 
 %.eps: %.ps
 	ps2eps -f $< $@
+
+%.eps: %.gnu %.txt
+	gnuplot $<
 
 %.ps: %.mp
 	mpost -tex=xelatex $<
