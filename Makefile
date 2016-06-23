@@ -1,7 +1,7 @@
 XELATEX = xelatex
 XELATEXFLAGS = -halt-on-error
 
-ALL=main.pdf presentation.pdf
+ALL=main.pdf presentation.pdf review.pdf
 
 %.pdf: %.tex $(wildcard *.tex) resources
 	$(XELATEX) $(XELATEXFLAGS) $<
