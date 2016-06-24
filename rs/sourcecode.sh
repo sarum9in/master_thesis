@@ -24,6 +24,8 @@ gen()
             grep -v /detail/ | \
             grep -v /web/ | \
             grep -v /compatibility/ | \
+            grep -v /mock/ | \
+            grep -v '_test\.go' | \
             egrep -v '/none_dcs\.py$' | \
             egrep -v '/common\.hpp$' | \
             egrep -v '/pb/convert\.hpp$' | \
